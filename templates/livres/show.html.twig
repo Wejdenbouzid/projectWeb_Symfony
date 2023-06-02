@@ -1,0 +1,116 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<!--======================================
+        START HERO AREA
+======================================-->
+<section class="hero-area bg-white shadow-sm overflow-hidden pt-40px pb-40px">
+    <span class="stroke-shape stroke-shape-1"></span>
+    <span class="stroke-shape stroke-shape-2"></span>
+    <span class="stroke-shape stroke-shape-3"></span>
+    <span class="stroke-shape stroke-shape-4"></span>
+    <span class="stroke-shape stroke-shape-5"></span>
+    <span class="stroke-shape stroke-shape-6"></span>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9">
+                <div class="hero-content">
+                    <h2 class="section-title pb-2 fs-24 lh-34">Trouvez des livres pour cette categorie</h2>
+                </div><!-- end hero-content -->
+            </div><!-- end col-lg-9 -->
+            <div class="col-lg-3">
+                <div class="hero-btn-box text-right py-3">
+                    <a href="{{url("categorie")}}" class="btn theme-btn theme-btn-outline">Ajouter une categorie</a>
+                </div>
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+<!--======================================
+        END HERO AREA
+======================================-->
+
+<!-- ================================
+         START QUESTION AREA
+================================= -->
+<section class="question-area pt-40px pb-40px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="question-main-bar mb-50px">
+                    <div class="question-highlight">
+                        <div class="media media-card shadow-none rounded-0 mb-0 bg-transparent p-0">
+                            <div class="media-body">
+                                <h5 class="fs-20"><a href="question-details.html">{{ categorie.titre }}</a></h5>
+                            </div>
+                        </div><!-- end media -->
+                    </div><!-- end question-highlight -->
+                    <div class="question d-flex">
+                        <div class="votes votes-styled w-auto">
+                            <div id="vote" class="upvotejs">
+                                <a class="upvote upvote-on" data-toggle="tooltip" data-placement="right" title="This question is useful"></a>
+                                <span class="count">1</span>
+                                <a class="downvote" data-toggle="tooltip" data-placement="right" title="This question is not useful"></a>
+                                <a class="star" data-toggle="tooltip" data-placement="right" title="Bookmark this question."></a>
+                            </div>
+                        </div><!-- end votes -->
+                        
+                        <!-- question-post-body -->
+                        <div class="question-post-body-wrap flex-grow-1">
+                            <div class="question-post-body">
+                                {{ categorie.detail}}
+                            </div>
+                            <!-- end question-post-body -->
+                        
+                        </div>
+                        <!-- end question-post-body-wrap -->
+                    </div>
+                    <!-- end question -->
+                    
+                    
+                    
+                    
+                    <!-- liste des livres -->
+                    
+                    <div class="subheader d-flex align-items-center justify-content-between">
+                        <div class="subheader-title">
+                            <h3 class="fs-16">{{ livres | length }} livre(s)</h3>
+                        </div>
+                    </div>
+                    <div class="subheader">
+                        <div class="subheader-title">
+                            <h3 class="fs-16">Ajouter livre</h3>
+                        </div><!-- end subheader-title -->
+                    </div><!-- end subheader -->
+                    
+                    {{ form_start(form, {"attr": {"class": "card-body"}}) }}
+
+                        {{ form_row (form.titre)}}
+                        {{ form_row (form.auteur)}}
+                        {{ form_row (form.prix)}}
+                        <div class="input-box">
+                            {{ form_label(form.detail) }}
+                            <div class="form-group">
+                                {{ form_widget(form.detail) }}
+                                {{ form_errors(form.detail) }}
+                            </div>
+                        </div>
+                        
+                        {{ form_row (form.submit)}}
+                        <!-- end input-box -->
+                    {{ form_end(form) }}
+
+
+
+                </div><!-- end question-main-bar -->
+            </div><!-- end col-lg-9 -->
+        
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end question-area -->
+<!-- ================================
+         END QUESTION AREA
+================================= -->
+
+{% endblock %}
